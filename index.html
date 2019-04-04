@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<script type="text/javascript" src="https://unpkg.com/react@15/dist/react.js"> </script>
+		<script type="text/javascript" src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/babel-standalone@6.15.0/babel.js"></script>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="text/babel">
+			class Hello extends React.Component {
+				constructor() {
+					super();
+					this.state = {
+						message: "my friend (from Michigan)!",
+						button: "Ohio"
+					};
+					this.updateMessage = this.updateMessage.bind(this);
+				}
+				
+				updateMessage() {
+					if (this.state.message === "my friend (from Michigan)!") {
+						this.setState({ 
+							message:  "MY FRIEND (FROM OHIO)!",
+							button: "Michigan"
+						});
+					}
+					else {
+						this.setState({
+							message: "my friend (from Michigan)!",
+							button: "Ohio"
+						});
+					}
+				}
+
+				render() {
+					return (
+					<div>
+						<h1>Hello {this.state.message}</h1>
+						<button onClick={this.updateMessage}>{this.state.button}</button>
+					</div>
+					)
+				}
+			}
+			ReactDOM.render(<Hello />, document.getElementById("root"));
+		</script>
+	</body>
+</html>
